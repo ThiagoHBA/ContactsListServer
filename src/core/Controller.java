@@ -1,4 +1,4 @@
-package main;
+package core;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jms.*;
+
+import interfaces.Server;
 
 public class Controller implements Server {
 	private Registry registry = null;

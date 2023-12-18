@@ -1,4 +1,4 @@
-package main;
+package view;
 
 import java.awt.EventQueue;
 
@@ -7,15 +7,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.SwingWorker;
 
+import core.Controller;
+import java.awt.Color;
+
 public class View {
 	Controller controller = new Controller();
 
 	private JFrame frame;
 	private JTextPane textPane;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,17 +32,10 @@ public class View {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public View() {
 		initialize();
-		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 489, 697);
@@ -49,11 +43,13 @@ public class View {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("FILAS NO SERVIDOR");
-		lblNewLabel.setBounds(180, 48, 181, 14);
+		lblNewLabel.setBounds(189, 19, 181, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		textPane = new JTextPane();
-		textPane.setBounds(60, 105, 330, 490);
+		textPane.setBackground(new Color(192, 192, 192));
+		textPane.setEditable(false);
+		textPane.setBounds(46, 44, 387, 582);
 		frame.getContentPane().add(textPane);
 	}
 	
@@ -63,7 +59,7 @@ public class View {
 			public Void doInBackground() {
 				while (true) {
 					try {
-						Thread.sleep(7000);
+						Thread.sleep(3000);
 						String panelContentQ = controller.getQueuesNames();
 						textPane.setText(panelContentQ);
 					} catch (Exception e) {
